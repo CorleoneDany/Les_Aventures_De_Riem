@@ -5,7 +5,8 @@
 import time
 import pygame
 pygame.init()
-
+pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
+path = "C:/Users/Nero/Desktop/Nouveau dossier/Les_Aventures_De_Riem"
 screenWidth = 1000
 screenHeight = 600
 win = pygame.display.set_mode((screenWidth, screenHeight))
@@ -67,6 +68,10 @@ while run:
 
     if abs((personnage1.x+25) - (personnage2.x+25)) < 50 and abs((personnage1.y+25) - (personnage2.y+25)) < 50:
         personnage1.color = (0,0,0)
+        personnage1.x = 9999
+        personnage1.y = 9999
+        pygame.mixer.music.load(path + "/Son/game_over.OGG")
+        pygame.mixer.music.play()
 
     win.fill((0))
     pygame.draw.rect(win, personnage1.color, (personnage1.x, personnage1.y, personnage1.width, personnage1.height))
