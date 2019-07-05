@@ -1,12 +1,18 @@
 # TO DO : Remplacer le rectangle par une image de Riem
-# Créer la fonction de mort
 # Créer les bruitages ainsi que les events qui les fera trigger
+# Corriger la variable path pour qu'elle s'adapte à toutes les machines
 
+import os
 import time
-import pygame
+try:
+    import pygame
+except ImportError:
+    import subprocess
+    subprocess.call([r"Install.bat"])
+
 pygame.init()
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
-path = "C:/Users/Nero/Desktop/Nouveau dossier/Les_Aventures_De_Riem"
+path = os.path.dirname(os.path.realpath(__file__))
 screenWidth = 1000
 screenHeight = 600
 win = pygame.display.set_mode((screenWidth, screenHeight))
