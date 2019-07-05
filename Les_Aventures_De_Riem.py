@@ -4,7 +4,12 @@
 
 import os
 import time
-import pygame
+try:
+    import pygame
+except ImportError:
+    import subprocess
+    subprocess.call([r"Install.bat"])
+
 pygame.init()
 pygame.mixer.init(frequency=22050, size=-16, channels=2, buffer=4096)
 path = os.path.dirname(os.path.realpath(__file__))
